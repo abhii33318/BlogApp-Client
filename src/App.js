@@ -14,6 +14,7 @@ import Logout from './components/Pages/Logout';
 import CreatePost from './components/blog/CreateUpdateBlog/CreateBlog'
 import BlogDetails from './components/blog/BlogView/BlogDetails';
 import UpdateBlog from './components/blog/CreateUpdateBlog/UpdateBlog';
+import EditProfile from './components/editUser/user'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path="/createBlog" element={<CreatePost/>} />
         <Route path="/blog/:id" element={<BlogDetails/>} />
         <Route path="/update-blog/:id" element={<UpdateBlog />} />
+        <Route path="/editProfile" element ={<EditProfile/>}/>
 
         </Routes>
     </Router>  
