@@ -1,0 +1,127 @@
+.blog{
+  width: 100%; 
+  max-width: 100%;
+  height: 300px; 
+  box-sizing: border-box;
+
+}
+
+
+  .meta {
+    margin-top: 8px;
+    color: #888;
+  }
+  .card{
+    display: flex;
+  }
+  a{
+    text-decoration: none;
+    color: #000;
+  }
+  .filterside{
+    width: 200px;
+    height: 100%;
+  background-color: #cbbfbf;
+  }
+
+  .card-components{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-left: 25px;
+    margin-top: 12px;
+   
+   
+  }
+  .card-components img{
+    width: 320px;
+    height: 130px;
+    object-fit: cover;
+  }
+
+  .createBlogButton {
+    display: inline-block;
+    background-color: #303842; /* Change the background color to your preference */
+    color: white;
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px; /* Add rounded corners if desired */
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    /* Add a smooth hover effect */
+    margin-bottom: 5px;
+    /* margin-left: 17px; */
+    width: 290px;
+  
+    /* Center the text both horizontally and vertically */
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  .createBlogButton:hover {
+    background-color: #0056b3; /* Change the hover background color as desired */
+  }
+
+  /* Add this CSS in your Home.css or a separate CSS file */
+.blog-card {
+  width: 320px;
+  height: 250px;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 10px; /* Rounded corners for a softer look */
+  background-color: #fff;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  border: 2px solid #ccc; /* Border for the cards */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+/* Adjust the size of the card as needed */
+.card {
+  /* Set the width of the card container */
+  width: 100%;
+  /* Add padding for spacing */
+  padding: 2px;
+}
+
+/* You can also style other card elements as needed */
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 7px;
+  margin-top: 7px;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-bottom: 7px;
+}
+
+.card .meta {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Styling for the video element */
+.blog-video {
+
+  width: 100%;
+  max-width: 100%;
+  height: 300px;
+  box-sizing: border-box;
+  object-fit: cover; /* Ensures the video covers the entire container */
+  
+}
+
+/* You can also add other styles or customize it further as needed */
+
+.blog-card:hover {
+  transform: scale(1.05); /* Enlarge the card */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Add a stronger shadow on hover */
+  border: 2px solid #5bc0de; /* Light blue border */
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s; /* Add border transition */
+}

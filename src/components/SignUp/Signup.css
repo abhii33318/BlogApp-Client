@@ -1,0 +1,89 @@
+.signup-bg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/Blog.jpeg'); /* Adjust the path to your image file */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  width: 100%;
+}
+
+.signup-container {
+  
+  max-width: 400px;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    max-width: 100px;
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    margin-bottom: 1rem;
+  }
+  
+  /* .signup-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  
+  } */
+
+  .signup-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    transition: all 0.3s ease; /* Add a smooth transition effect for all properties */
+  
+    /* Add a 3D effect using box shadow */
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1),
+                0 1px 1px rgba(0, 0, 0, 0.1);
+  
+    /* Add a 3D effect on hover */
+    &:hover {
+      background-color: #e0e0e0;
+      box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1),
+                  0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow for hover effect */
+    }
+  
+    /* Add a 3D effect when focused */
+    &:focus {
+      outline: none;
+      background-color: #fff; /* Change background color when focused */
+      box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.1),
+                  0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow for focus effect */
+    }
+  }
+  
+  
+  .signup-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .signup-form button:hover {
+    background-color: #0056b3;
+  }
+
+  .signup-form .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  

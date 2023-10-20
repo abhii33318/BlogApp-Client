@@ -1,0 +1,39 @@
+.about-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Hide overflow */
+}
+
+.about-video {
+  flex: 1; /* Half of the screen width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none; /* Remove the black background */
+}
+
+.video {
+  height: 100vh; /* Half of the viewport height */
+  width: 100%; /* Full width */
+  object-fit: cover;
+}
+
+.about-content {
+  flex: 1; /* Half of the screen width */
+  background: #cae4ec; /* Background color for the content */
+  color: #000; /* Text color */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-content h1 {
+  font-size: 28px;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.5;
+}

@@ -1,0 +1,230 @@
+/* BlogDetails.css */
+
+.blog-details-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between; /* Add space-between to place content at the top and bottom */
+}
+
+/* Style for the blog title */
+.blog-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style for the blog image */
+.blog-image {
+  width: 100%;
+  height: 350px;
+  margin-bottom: 10px;
+}
+
+/* Style for the blog content */
+.blog-content {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Style for the meta information */
+.meta {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #777;
+  text-align: left; /* Align the meta information to the left */
+}
+
+/* Style for author and date */
+.meta p {
+  margin: 5px 0;
+}
+.blog-div{
+  /* display: flex; */
+  margin: 20px auto;
+
+}
+
+
+/* BlogDetails.css */
+
+.edit-link,
+.update-link {
+  color: #007bff; /* Blue link color */
+  text-decoration: none;
+  margin-right: 10px; /* Add some spacing between the links */
+}
+
+/* Hover effect */
+.edit-link:hover,
+.delete-link:hover {
+  text-decoration: underline; /* Underline the link on hover */
+}
+
+.delete-link{
+
+  color: #e11b1f; /* Blue link color */
+  text-decoration: none;
+  margin-left: 685px;
+
+}
+
+.edit-delete{
+  margin-top: 20px;
+}
+/* Add this style to BlogDetails.css */
+.blog-details-container {
+  position: relative; /* Make the container a positioning context */
+}
+
+.exit-button {
+  position: absolute;
+  top: 55px;
+  right: 8px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #afa8a8;
+}
+
+/* Comment.css */
+
+/* Comment container */
+.comment-container {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Comment input area */
+.comment-input {
+  width: 97%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Comment submit button */
+.comment-submit {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Comment list */
+.comment-list {
+  margin-top: 10px;
+}
+
+/* Individual comment */
+.comment {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-start; /* Align content at the top */
+  justify-content: space-between; 
+}
+
+/* Comment author */
+.comment-author {
+  font-weight: bold;
+  
+}
+
+/* Comment timestamp */
+.comment-timestamp {
+  color: #777;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+
+
+.comment-content {
+  flex: 1; /* Allow comment content to grow and take available space */
+}
+
+.delete-comment-icon {
+    cursor: pointer;
+    color: #ccc;
+    margin-top: 14px;
+    margin-right: 10px;
+}
+
+.like-section {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.like-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+}
+
+.like-icon {
+  font-size: 24px;
+  margin-right: 5px;
+  color: #333; /* Default color for the like icon */
+}
+
+.like-count {
+  font-size: 16px;
+  color: #333; /* Default color for the like count */
+}
+
+/* Style for the like button when it's liked */
+.like-button.liked {
+  color: #007bff; /* Change the color when the button is liked */
+}
+
+.edit-comment-icon {
+  cursor: pointer;
+  color: #bababa;
+  font-size: 35px;
+  margin-right: 5px;
+ 
+}
+
+/* Hover effect for the edit icon (optional) */
+.edit-comment-icon:hover {
+  text-decoration: underline; /* Underline the icon on hover (optional) */
+}
+
+
+.CommentUpdate {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 45px;
+  margin-left: 10px;
+}
+  
+  .CommentUpdate:hover {
+    background-color: #2980b9; /* Change background color on hover */
+  }
+  
+
