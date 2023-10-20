@@ -132,6 +132,7 @@ const BlogDetails = () => {
       fetchComments();
     } catch (error) {
       console.error('Error deleting comment: ', error);
+      console.log(error)
     }
   };
 
