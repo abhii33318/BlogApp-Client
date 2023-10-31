@@ -1,8 +1,9 @@
 .profile-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+  max-width: 400px;
+  margin: 65px auto;
+  padding: 20px;
+  text-align: center;
+  BACKGROUND-COLOR: aliceblue;
   }
   
   .profile-image-container {

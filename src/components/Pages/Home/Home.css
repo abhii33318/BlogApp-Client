@@ -125,3 +125,19 @@
   border: 2px solid #5bc0de; /* Light blue border */
   transition: transform 0.3s, box-shadow 0.3s, border 0.3s; /* Add border transition */
 }
+.social-icons-home {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -25px;
+}
+
+.social-icons-home a {
+  text-decoration: none;
+  color: #1e1f20;
+  margin-right: 10px;
+  transition: color 0.3s;
+}
+
+.social-icons-home a:hover {
+  color: #ff6600;
+}

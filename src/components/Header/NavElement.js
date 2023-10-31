@@ -1,4 +1,5 @@
 import { FaBars } from 'react-icons/fa'
+import { FaUser } from 'react-icons/fa';
 import styled from 'styled-components'
 import { NavLink as Link } from 'react-router-dom'
 export const PrimaryNav = styled.nav`
@@ -63,7 +64,7 @@ export const ProfileIcon = styled.div`
 export const Dropdown = styled.div`
   position: absolute;
   top: 55px; /* Adjust the distance below the Navbar */
-  right: 135px;
+  right: 140px;
   background: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
@@ -82,7 +83,7 @@ export const Dropdown = styled.div`
 
   
   & > * {
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -91,4 +92,79 @@ export const Dropdown = styled.div`
       background-color: #f0f0f0; /* Background color on hover */
     }
   }
+`;
+export const StyledProfileIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ProfileImage = styled(FaUser)`
+  font-size: 24px;
+  color: #007bff; /* Choose your desired color */
+  margin-bottom: 5px;
+`;
+
+export const SocialIcon = styled.div`
+  font-size: 20px;
+  margin: 15px; /* Add spacing between icons */
+  cursor: pointer; /* Add a pointer cursor on hover */
+  transition: color 0.3s; /* Add a smooth color transition on hover */
+  color: #1a1c1d;
+
+  &:hover {
+    color: #ff6600; /* Change the color on hover */
+  }
+`;
+
+
+export const Logoutbutton = styled.div`
+  display: inline-block;
+  background-color: #303842;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 10px;
+
+  /* Add hover styling */
+  &:hover {
+    background-color: red; /* Change the hover background color to red */
+    cursor: pointer;
+  }
+`;
+export const EditButton = styled.div`
+  ul {
+    cursor: pointer;
+    transition: color 0.3s; /* Add a smooth color transition on hover */
+    color: #007bff;
+  }
+
+  ul:hover {
+    color: #ff6600; /* Change the color on hover */
+  }
+`;
+
+export const UserProfileImage = styled.img`
+  width: 28px; /* Adjust the width and height as needed */
+  height: 28px;
+  border-radius: 50%; /* Create a circular shape */
+  overflow: hidden; /* Hide the overflow to make it circular */
+  margin-bottom: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+`;
+export const UserProfileImage1 = styled.img`
+width: 74px; /* Adjust the width and height as needed */
+height: 74px;
+border: 2px solid #007bff; /* Add a border with the desired color */
+border-radius: 50%; /* Create a circular shape */
+overflow: hidden; /* Hide the overflow to make it circular */
+object-fit: cover;
+margin-bottom: 10px;
+box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 `;

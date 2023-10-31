@@ -15,6 +15,8 @@ import CreatePost from './components/blog/CreateUpdateBlog/CreateBlog'
 import BlogDetails from './components/blog/BlogView/BlogDetails';
 import UpdateBlog from './components/blog/CreateUpdateBlog/UpdateBlog';
 import EditProfile from './components/editUser/user'
+import ForgotPassword from './components/blog/forgotPassword/forgotPassword'
+
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
         <Route path="/blog/:id" element={<BlogDetails/>} />
         <Route path="/update-blog/:id" element={<UpdateBlog />} />
         <Route path="/editProfile" element ={<EditProfile/>}/>
+        <Route path="/forgotPassword" element ={<ForgotPassword/>}/>
 
         </Routes>
     </Router>  

@@ -21,7 +21,7 @@ const Login = () => {
     }
 
     try {
-      console.log(username,password)
+      console.log("username and password is",username,password)
       
 
       const userData = await AuthService.login(username, password);

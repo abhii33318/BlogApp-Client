@@ -1,9 +1,12 @@
 import axios from 'axios';
+// import { useState } from 'react';
 
 const BASE_URL = 'http://localhost:8000';
-const userId = localStorage.getItem('userId') 
+// const userId = localStorage.getItem('userId') 
 
 const AuthService = {
+  // const [userId, setUserId] = useState(localStorage.getItem('userId'));
+  // const userId = localStorage.getItem('userId') 
   
   login: async (username, password) => {
     try {
@@ -78,6 +81,7 @@ const AuthService = {
   },
   getDraftbyUserId: async()=>{
     try{
+      const userId = localStorage.getItem('userId') 
       const response = await axios.get(`${BASE_URL}/draft/${userId}`)
       return response;
 

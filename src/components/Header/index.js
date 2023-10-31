@@ -1,59 +1,61 @@
-import React, { useState } from 'react';
-import { StyledNavbar, ProfileIcon, MenuLink, Dropdown, Menu, Hamburger } from './NavElement';
-import { FaUser } from 'react-icons/fa'; // Import the user icon
-import styled from 'styled-components'; // Import styled-components
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import {
+  StyledNavbar,
+  ProfileIcon,
+  MenuLink,
+  Dropdown,
+  Menu,
+  Hamburger,
+  StyledProfileIcon,
+  SocialIcon,
+  UserProfileImage,
+  UserProfileImage1,
+  EditButton,
+  Logoutbutton,
+} from './NavElement';
+import { FaUser } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
+import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import './index.css'
+import './index.css';
 
-const StyledProfileIcon = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
-const ProfileImage = styled(FaUser)`
-  font-size: 24px;
-  color: #007bff; /* Choose your desired color */
-  margin-bottom: 5px;
-`;
-const Logoutbutton = styled.div`
-  display: inline-block;
-  background-color: #303842;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  width: 200px;
-  text-align: center;
-  line-height: 1.5;
-  margin-bottom: 5px;
-
-  /* Add hover styling */
-  &:hover {
-    background-color: red; /* Change the hover background color to red */
-    cursor: pointer;
-  }
-`;
 
 const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const [userData, setUserData] = useState('');
+  const BASE_URL = 'http://localhost:8000';
+  console.log(userData.profileImage)
+  useEffect(() => {
+    const userID = localStorage.getItem('userId');
+    axios
+      .get(`${BASE_URL}/users/${userID}`)
+      .then((response) => {
+        const userData = response.data.data.user;
+        setUserData(userData);
+      })
+      .catch((error) => {
+        console.error('Error fetching user data: ', error);
+      });
+  }, []);
 
   const handleProfileClick = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const handleLogout = () => {
-    localStorage.clear('username')
-    localStorage.clear('name')
-    localStorage.clear('userToken')
-    localStorage.clear('userId')
-    navigate('/');
-    // Implement your logout logic here
+  const handleEditUser = () => {
+    navigate('/editProfile');
   };
-  // let username = localStorage.getItem("username")
-  let name = localStorage.getItem("name")
+
+  const handleLogout = () => {
+    localStorage.clear('username');
+    localStorage.clear('name');
+    localStorage.clear('userToken');
+    localStorage.clear('userId');
+    navigate('/');
+  };
 
   return (
     <>
@@ -71,20 +73,34 @@ const Navbar = () => {
           </MenuLink>
         </Menu>
         <ProfileIcon onClick={handleProfileClick}>
-          <FaUser size={20} />
-        </ProfileIcon>
+        <UserProfileImage src={userData.profileImage} alt="Profile" />
+      </ProfileIcon>
       </StyledNavbar>
 
       <Dropdown show={showDropdown}>
         <StyledProfileIcon>
-          <ProfileImage />
-          {/* Display Username */}
-          <div className='name'>{name}</div>
-          <div className='editButton'>
-          <ul>edit profile</ul>
+          <div>
+          <UserProfileImage1 src={userData.profileImage} alt="Profile" />
+          </div>
+          <div className="name">{userData.name}</div>
+          <div className="editButton">
+            <EditButton onClick={handleEditUser}>
+              <ul>Edit Profile</ul>
+            </EditButton>
+          </div>
+          <div className="social-icons">
+            <a href={userData.instagramLink} target="_blank" rel="noopener noreferrer">
+              <SocialIcon as={FaInstagram} />
+            </a>
+            <a href={userData.facebookLink} target="_blank" rel="noopener noreferrer">
+              <SocialIcon as={FaLinkedin} />
+            </a>
+            <a href={userData.linkedinLink} target="_blank" rel="noopener noreferrer">
+              <SocialIcon as={FaFacebook} />
+            </a>
           </div>
         </StyledProfileIcon>
-        {/* Logout Button */}
+
         <Logoutbutton onClick={handleLogout}>LOG OUT</Logoutbutton>
       </Dropdown>
     </>
