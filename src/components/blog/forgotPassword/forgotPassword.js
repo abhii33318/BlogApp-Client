@@ -28,8 +28,8 @@ const ForgotPassword = () => {
                 Swal.fire('Success', 'OTP sent to your email', 'success');
             }
         } catch (error) {
-            setMessage(`Error: ${error.message}`);
-            Swal.fire('Error', `Failed to send OTP: ${error.message}`, 'error');
+            // setMessage(`Error: ${erro`);
+            Swal.fire('Error', `Failed to send OTP: Please Provide registered Email`, 'error');
         }
     };
 

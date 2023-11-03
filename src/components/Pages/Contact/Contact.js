@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../../Header';
 import AboutVideo from '../../../assets/AboutVBG.mp4';
 import './Contact.css';
+import { FaEnvelope, FaPhone, FaMapMarker } from 'react-icons/fa';
 
 function Contact() {
   return (
@@ -17,14 +18,14 @@ function Contact() {
         <div className="Contact-content">
           <h2>Our Contact Information</h2>
           <ul>
-            <li>
-              <strong>Email:</strong> <a href="mailto:contact@example.com">contact@example.com</a>
+            <li className="contact-item">
+              <FaEnvelope className="icon" /> <a href="mailto:contact@example.com">contact@example.com</a>
             </li>
-            <li>
-              <strong>Phone:</strong> +1 (123) 456-7890
+            <li className="contact-item">
+              <FaPhone className="icon" /> +1 (123) 456-7890
             </li>
-            <li>
-              <strong>Address:</strong> 1234 Main Street, City, Country
+            <li className="contact-item">
+              <FaMapMarker className="icon" /> 1234 Main Street, City, Country
             </li>
           </ul>
         </div>

@@ -9,67 +9,62 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-
-  justify-content: space-between; /* Add space-between to place content at the top and bottom */
+  justify-content: space-between; 
+  position: relative; 
 }
 
-/* Style for the blog title */
+
 .blog-title {
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-/* Style for the blog image */
+
 .blog-image {
   width: 100%;
   height: 350px;
   margin-bottom: 10px;
 }
 
-/* Style for the blog content */
 .blog-content {
   font-size: 18px;
   line-height: 1.5;
 }
 
-/* Style for the meta information */
 .meta {
   margin-top: 10px;
   font-size: 16px;
   color: #777;
-  text-align: left; /* Align the meta information to the left */
+  text-align: left; 
 }
 
-/* Style for author and date */
 .meta p {
   margin: 5px 0;
 }
 .blog-div{
-  /* display: flex; */
+ 
   margin: 20px auto;
 
 }
 
 
-/* BlogDetails.css */
-
 .edit-link,
 .update-link {
-  color: #007bff; /* Blue link color */
+  color: #007bff; 
   text-decoration: none;
-  margin-right: 10px; /* Add some spacing between the links */
+  margin-right: 10px; 
 }
 
-/* Hover effect */
+
 .edit-link:hover,
 .delete-link:hover {
-  text-decoration: underline; /* Underline the link on hover */
+  text-decoration: underline;
 }
 
 .delete-link{
 
-  color: #e11b1f; /* Blue link color */
+  color: #e11b1f; 
   text-decoration: none;
   margin-left: 685px;
 
@@ -78,10 +73,7 @@
 .edit-delete{
   margin-top: 20px;
 }
-/* Add this style to BlogDetails.css */
-.blog-details-container {
-  position: relative; /* Make the container a positioning context */
-}
+
 
 .exit-button {
   position: absolute;
@@ -96,7 +88,7 @@
 
 /* Comment.css */
 
-/* Comment container */
+
 .comment-container {
   margin-top: 20px;
   border: 1px solid #ccc;
@@ -105,7 +97,7 @@
   background-color: #f9f9f9;
 }
 
-/* Comment input area */
+
 .comment-input {
   width: 97%;
   padding: 10px;
@@ -114,7 +106,7 @@
   margin-bottom: 10px;
 }
 
-/* Comment submit button */
+
 .comment-submit {
   background-color: #007bff;
   color: #fff;
@@ -141,13 +133,12 @@
   justify-content: space-between; 
 }
 
-/* Comment author */
+
 .comment-author {
   font-weight: bold;
   
 }
 
-/* Comment timestamp */
 .comment-timestamp {
   color: #777;
   font-size: 10px;
@@ -167,36 +158,6 @@
     margin-right: 10px;
 }
 
-.like-section {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.like-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  display: flex;
-  align-items: center;
-}
-
-.like-icon {
-  font-size: 24px;
-  margin-right: 5px;
-  color: #333; /* Default color for the like icon */
-}
-
-.like-count {
-  font-size: 16px;
-  color: #333; /* Default color for the like count */
-}
-
-/* Style for the like button when it's liked */
-.like-button.liked {
-  color: #007bff; /* Change the color when the button is liked */
-}
 
 .edit-comment-icon {
   cursor: pointer;
@@ -208,7 +169,7 @@
 
 /* Hover effect for the edit icon (optional) */
 .edit-comment-icon:hover {
-  text-decoration: underline; /* Underline the icon on hover (optional) */
+  text-decoration: underline; 
 }
 
 

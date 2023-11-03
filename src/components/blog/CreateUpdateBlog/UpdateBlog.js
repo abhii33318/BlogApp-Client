@@ -33,10 +33,6 @@ const QuillEditor = styled(ReactQuill)`
     /* Other CSS properties as needed */
 `;
 
-
-
-
-
 const Container = styled(Box)(({ theme }) => ({
   margin: '10px 50px',
   [theme.breakpoints.down('md')]: {
@@ -71,7 +67,7 @@ const UploadIcon = styled(AddIcon)({
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  fontSize: 48, // Adjust the size as needed
+  fontSize: 48, 
   color: 'rgba(255, 255, 255, 0.7)', // Adjust the color and opacity
   pointerEvents: 'none', // Prevent the icon from blocking clicks on the input
 });
@@ -106,8 +102,8 @@ const UpdateBlog = () => {
         });
 
         setEditorContent(blogData.description || '');
-        setSelectedCategory(blogData.category || ''); // Set the selected category
-        setStatus(blogData.status || 'draft'); // Set the status from the fetched data
+        setSelectedCategory(blogData.category || ''); 
+        setStatus(blogData.status || 'draft'); 
       } catch (error) {
         console.error('Error fetching existing blog post: ', error);
       }

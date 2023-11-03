@@ -16,6 +16,7 @@ import BlogDetails from './components/blog/BlogView/BlogDetails';
 import UpdateBlog from './components/blog/CreateUpdateBlog/UpdateBlog';
 import EditProfile from './components/editUser/user'
 import ForgotPassword from './components/blog/forgotPassword/forgotPassword'
+import ChangePassword from './components/blog/changePassword/changePassword';
 
 
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/update-blog/:id" element={<UpdateBlog />} />
         <Route path="/editProfile" element ={<EditProfile/>}/>
         <Route path="/forgotPassword" element ={<ForgotPassword/>}/>
+        <Route path="/changePassword" element ={<ChangePassword/>}/>
 
         </Routes>
     </Router>  

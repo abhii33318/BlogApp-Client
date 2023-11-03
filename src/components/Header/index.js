@@ -14,9 +14,7 @@ import {
   EditButton,
   Logoutbutton,
 } from './NavElement';
-import { FaUser } from 'react-icons/fa';
 import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import './index.css';
 

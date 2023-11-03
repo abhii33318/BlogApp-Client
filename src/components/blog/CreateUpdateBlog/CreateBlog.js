@@ -5,7 +5,7 @@ import { AddCircle as AddIcon } from '@mui/icons-material';
 import { Save as SaveIcon } from '@mui/icons-material';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
-import './CreateBlog.css';
+import './create.css';
 import AuthService from '../../../services/AuthService';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,7 @@ const StyledFormControl = styled(FormControl)`
     margin-top: 15px;
     display: flex;
     flex-direction: row;
+
 `;
 
 const InputTextField = styled(InputBase)`
@@ -230,16 +231,17 @@ const CreatePost = () => {
                         <IconButton
                             onClick={() => saveDraft()}
                             color="primary"
-                            style={{
-                                marginRight: '10px',
-                                color: 'grey',
-                            }}
+                            className='draft1'
+                            // style={{
+                            //     color: 'grey',
+                            //     width: 49px,
+                            // }}
                         >
                             <SaveIcon />
                         </IconButton>
                     </Tooltip>
                     <div className="dropdown-container">
-                        <div className="dropdown-header" onClick={toggleDropdown}>
+                        <div className="dropdown-header1" onClick={toggleDropdown}>
                             {selectedOption || 'Select an option'} &#9660;
                         </div>
                         {isOpen && (
@@ -272,7 +274,7 @@ const CreatePost = () => {
                             </ul>
                         )}
                     </div>
-                    <Button onClick={() => savePost()} variant="contained" color="primary">
+                    <Button className='buttonpublish' onClick={() => savePost()} variant="contained" color="primary">
                         Publish
                     </Button>
                 </StyledFormControl>

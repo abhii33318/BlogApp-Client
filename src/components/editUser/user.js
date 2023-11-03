@@ -50,6 +50,9 @@ const EditProfile = () => {
       reader.readAsDataURL(file);
     }
   };
+ const handleChangePassword = async()=>{
+  navigate('/changePassword')
+ }
 
   const handleUpdateProfile = async () => {
     let userID = localStorage.getItem('userId');
@@ -83,7 +86,7 @@ const EditProfile = () => {
       instagram,
       facebook,
       profileImage: imageUrl, // Include the new image URL
-      // Add other fields as needed
+      
     };
     console.log("updated profile data is",updatedProfileData)
     try{
@@ -176,6 +179,10 @@ const EditProfile = () => {
       <button className="save-button" onClick={handleUpdateProfile}>
         Update Profile
       </button>
+      <button className="save-button" onClick={handleChangePassword}>
+        Change Password
+      </button>
+      
     </div>
   );
 };

@@ -30,7 +30,7 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      // Validate form inputs against the schema
+      
       await validationSchema.validate(
         {
           name,
@@ -39,11 +39,10 @@ const Signup = () => {
           password,
           confirmPassword,
         },
-        { abortEarly: false } // This will collect all validation errors
+        { abortEarly: false } //  collect all validation errors
       );
 
-      // Continue with signup logic if validation passes
-
+    
       const userData = await AuthService.signup(name, username,email, password);
       console.log('Logged in user:', userData);
 

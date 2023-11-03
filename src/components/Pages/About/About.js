@@ -10,7 +10,7 @@ function About() {
       <div className="about-container">
         <div className="about-video">
           <video autoPlay loop muted className="video">
-            <source src={AboutVideo} type="video/mp4" /> {/* Update the source with your video file */}
+            <source src={AboutVideo} type="video/mp4" /> 
             Your browser does not support the video tag.
           </video>
         </div>

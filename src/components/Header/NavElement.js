@@ -17,7 +17,7 @@ export const MenuLink = styled(Link)`
   cursor: pointer;
   align-items: center;
   text-decoration: none;
-  padding: 0 3.2rem;
+  padding: 70px;
   height: 100%;
   &.active {
     color: #000000;
@@ -59,12 +59,13 @@ export const ProfileIcon = styled.div`
   justify-content:flex-end;
   align-items: center;
   position:relative;
+  margin-right: -130px
 `;
 
 export const Dropdown = styled.div`
   position: absolute;
   top: 55px; /* Adjust the distance below the Navbar */
-  right: 140px;
+  right: 10px;
   background: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
@@ -142,6 +143,7 @@ export const EditButton = styled.div`
     cursor: pointer;
     transition: color 0.3s; /* Add a smooth color transition on hover */
     color: #007bff;
+    margin-left: 37px;
   }
 
   ul:hover {
