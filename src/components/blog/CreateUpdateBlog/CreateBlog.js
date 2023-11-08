@@ -142,6 +142,7 @@ const CreatePost = () => {
             }
         } catch (error) {
             console.error('Error saving post:', error);
+            Swal.fire('Error', 'Please fill the details', 'error');
         }
     };
 
@@ -158,6 +159,7 @@ const CreatePost = () => {
                 navigate('/home');
             }
         } catch (error) {
+            Swal.fire('Error', 'Please fill the details', 'error');
             console.error('Error saving draft:', error);
         }
     };

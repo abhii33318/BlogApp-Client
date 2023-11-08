@@ -1,8 +1,17 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './user.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required('Name is required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  linkedin: Yup.string(),
+  instagram: Yup.string(),
+  facebook: Yup.string(),
+});
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -13,23 +22,19 @@ const EditProfile = () => {
   const [facebook, setFacebook] = useState('');
   const [profileImage, setProfileImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
-
+  const [errors, setErrors] = useState({});
   const BASE_URL = 'http://localhost:8000'; // Replace with your API base URL
 
-  // Fetch user profile data when the page loads
   useEffect(() => {
     const userID = localStorage.getItem('userId');
     axios.get(`${BASE_URL}/users/${userID}`)
       .then((response) => {
-        console.log("response is",response)
         const userData = response.data.data.user;
-
         setName(userData.name || '');
         setEmail(userData.email || '');
         setLinkedIn(userData.linkedinLink || '');
         setInstagram(userData.instagramLink || '');
         setFacebook(userData.facebookLink || '');
-        // Set the existing profile image if available
         if (userData.profileImage) {
           setProfileImage(userData.profileImage);
         }
@@ -37,7 +42,7 @@ const EditProfile = () => {
       .catch((error) => {
         console.error('Error fetching user data: ', error);
       });
-  }, []); 
+  }, []);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -50,66 +55,67 @@ const EditProfile = () => {
       reader.readAsDataURL(file);
     }
   };
- const handleChangePassword = async()=>{
-  navigate('/changePassword')
- }
 
   const handleUpdateProfile = async () => {
-    let userID = localStorage.getItem('userId');
-    console.log('userId is ---------', userID);
+    try {
+      await validationSchema.validate(
+        {
+          name,
+          email,
+          linkedin,
+          instagram,
+          facebook,
+        },
+        { abortEarly: false } // Collect all validation errors
+      );
 
-    // Upload the image if a new one is selected
-    let imageUrl = profileImage;
-    if (imageFile) {
-      const formData = new FormData();
-      formData.append('file', imageFile);
+      let userID = localStorage.getItem('userId');
+      let imageUrl = profileImage;
 
-      try {
-        const imageResponse = await axios.post(`${BASE_URL}/image`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+      if (imageFile) {
+        const formData = new FormData();
+        formData.append('file', imageFile);
+
+        try {
+          const imageResponse = await axios.post(`${BASE_URL}/image`, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+
+          imageUrl = imageResponse.data?.data?.data?.imageUrl;
+          console.log("image url is", imageUrl)
+        } catch (error) {
+          console.log('Error uploading image: ', error);
+        }
+      }
+
+      const updatedProfileData = {
+        name,
+        email,
+        linkedin,
+        instagram,
+        facebook,
+        profileImage: imageUrl,
+      };
+
+      const response = await axios.put(`${BASE_URL}/users/${userID}`, updatedProfileData);
+
+      if (response.status === 200) {
+        Swal.fire('Congrats', 'User updated successfully!', 'success');
+        navigate('/home');
+      }
+    } catch (error) {
+      if (error.name === 'ValidationError') {
+        const validationErrors = {};
+        error.inner.forEach((e) => {
+          validationErrors[e.path] = e.message;
         });
-
-        imageUrl = imageResponse.data?.data?.data?.imageUrl; // Get the new image URL
-      } catch (error) {
-        console.log('Error uploading image: ', error);
+        setErrors(validationErrors);
+      } else {
+        console.log('Error updating profile: ', error);
       }
     }
-
-    // Prepare the updated profile data to send to the backend
-    console.log("profile image url is",imageUrl)
-    const updatedProfileData = {
-      name,
-      email,
-      linkedin,
-      instagram,
-      facebook,
-      profileImage: imageUrl, // Include the new image URL
-      
-    };
-    console.log("updated profile data is",updatedProfileData)
-    try{
-    const response = await axios.put(`${BASE_URL}/users/${userID}`, {
-      name:name || '',
-        email:email|| '',
-        profileImage:imageUrl || '',
-        instagramLink:instagram || '',
-        linkedinLink:linkedin || '',
-        facebookLink:facebook || ''
-    });
-
-    if (response.status === 200) {
-      Swal.fire(
-        'Congrats',
-        'User updated successfully!',
-        'success'
-    );
-    navigate('/home');
-    }}
-   catch (error) {
-    console.log('Error updating blog post: ', error);
-  }
   };
 
   return (
@@ -139,6 +145,7 @@ const EditProfile = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        {errors.name && <p className="error">{errors.name}</p>}
       </div>
       <div className="input-container">
         <input
@@ -148,6 +155,7 @@ const EditProfile = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {errors.email && <p className="error">{errors.email}</p>}
       </div>
       <div className="input-container">
         <input
@@ -179,10 +187,6 @@ const EditProfile = () => {
       <button className="save-button" onClick={handleUpdateProfile}>
         Update Profile
       </button>
-      <button className="save-button" onClick={handleChangePassword}>
-        Change Password
-      </button>
-      
     </div>
   );
 };

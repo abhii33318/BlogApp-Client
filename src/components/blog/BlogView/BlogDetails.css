@@ -151,7 +151,7 @@
   flex: 1; /* Allow comment content to grow and take available space */
 }
 
-.delete-comment-icon {
+.delete-comment-icon2 {
     cursor: pointer;
     color: #ccc;
     margin-top: 14px;
@@ -180,8 +180,9 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 84px;
   margin-top: 45px;
-  margin-left: 10px;
+  margin-left: 6px;
 }
   
   .CommentUpdate:hover {

@@ -71,14 +71,14 @@ const Navbar = () => {
           </MenuLink>
         </Menu>
         <ProfileIcon onClick={handleProfileClick}>
-        <UserProfileImage src={userData.profileImage} alt="Profile" />
+        <UserProfileImage src={userData.profileImage || 'https://blogsphere-ab.s3.amazonaws.com/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'} alt="Profile" />
       </ProfileIcon>
       </StyledNavbar>
 
       <Dropdown show={showDropdown}>
         <StyledProfileIcon>
           <div>
-          <UserProfileImage1 src={userData.profileImage} alt="Profile" />
+          <UserProfileImage1 src={userData.profileImage || 'https://blogsphere-ab.s3.amazonaws.com/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'} alt="Profile" />
           </div>
           <div className="name">{userData.name}</div>
           <div className="editButton">
@@ -90,10 +90,10 @@ const Navbar = () => {
             <a href={userData.instagramLink} target="_blank" rel="noopener noreferrer">
               <SocialIcon as={FaInstagram} />
             </a>
-            <a href={userData.facebookLink} target="_blank" rel="noopener noreferrer">
+            <a href={userData.linkedinLink} target="_blank" rel="noopener noreferrer">
               <SocialIcon as={FaLinkedin} />
             </a>
-            <a href={userData.linkedinLink} target="_blank" rel="noopener noreferrer">
+            <a href={userData.facebookLink} target="_blank" rel="noopener noreferrer">
               <SocialIcon as={FaFacebook} />
             </a>
           </div>

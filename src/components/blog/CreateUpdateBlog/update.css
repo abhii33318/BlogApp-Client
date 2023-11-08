@@ -86,12 +86,16 @@ background-color: #425df4;
   font-size: 12px;
   padding: 7px 12px;
 }
-.DraftPublishButton{
-margin-left: auto;
+.ButtonStyle {
+  margin-top:10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
-.ButtonStyle{
-height: 60px;
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
+
+.DraftPublishButton {
+  margin-left: auto; /* Adjust this value to increase or decrease the space */
+}
+.ButtonStyle button {
+  margin-right: 5px; /* This adds space between the buttons */
 }

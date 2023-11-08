@@ -211,7 +211,7 @@ const BlogDetails = () => {
                             )}
                           </>
                         )}
-                        <span className="delete-comment-icon" onClick={() => handleCommentDelete(comment._id)}>
+                        <span className="delete-comment-icon2" onClick={() => handleCommentDelete(comment._id)}>
                           <DeleteIcon />
                         </span>
                       </>

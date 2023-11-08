@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './changePassword.css'; // Assuming your CSS file is named 'ChangePassword.css'
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -11,6 +12,7 @@ const ChangePassword = () => {
   const [error, setError] = useState('');
   const BASE_URL = 'http://localhost:8000';
   let userId = localStorage.getItem('userId');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +49,7 @@ const ChangePassword = () => {
 
       if (response.status === 200) {
         Swal.fire('Success!', response.data.message, 'success');
+        navigate('/home')
       } else {
         Swal.fire('Error', response.data.message, 'error');
       }
@@ -57,6 +60,7 @@ const ChangePassword = () => {
   };
 
   return (
+    <div className='change-password'>
     <div className="change-password-container">
       <h2>Change Password</h2>
       {error && <p className="error-message">{error}</p>}
@@ -94,6 +98,7 @@ const ChangePassword = () => {
         </div>
         <button type="submit" className="submit-button">Change Password</button>
       </form>
+    </div>
     </div>
   );
 };

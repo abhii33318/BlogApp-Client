@@ -60,6 +60,7 @@ const ForgotPassword = () => {
         }
     };
     return (
+        <div className='forgot-password'>
         <div className="forgot-password-container">
             <h1>Forgot Password</h1>
             {!otpSent ? (
@@ -103,6 +104,7 @@ const ForgotPassword = () => {
                     )}
                 </div>
             )}
+        </div>
         </div>
     );
 };

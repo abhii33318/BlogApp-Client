@@ -10,7 +10,7 @@ import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
 
 const Home = () => {
   const navigate = useNavigate();
-  // const [Author, setAuthor] = useState(localStorage.getItem('name'));
+  const [Author, setAuthor] = useState(localStorage.getItem('name'));
   const [blogData, setBlogData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [draftData, setDraftData] = useState([]);
@@ -114,7 +114,7 @@ const Home = () => {
                   <h2>{draft.title}</h2>
                   <img src={draft.blogImage} alt={draft.title} />
                   <div className="meta">
-                    <p>Author: {draft.createdAt}</p>
+                    <p>Author: {Author}</p>
                     <p>Date: {formatDate(draft.createdAt)}</p>
                   </div>
                   <div className="social-icons-home">

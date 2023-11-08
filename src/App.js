@@ -15,8 +15,8 @@ import CreatePost from './components/blog/CreateUpdateBlog/CreateBlog'
 import BlogDetails from './components/blog/BlogView/BlogDetails';
 import UpdateBlog from './components/blog/CreateUpdateBlog/UpdateBlog';
 import EditProfile from './components/editUser/user'
-import ForgotPassword from './components/blog/forgotPassword/forgotPassword'
-import ChangePassword from './components/blog/changePassword/changePassword';
+import ForgotPassword from './components/editUser/forgotPassword/forgotPassword'
+import ChangePassword from './components/editUser/changePassword/changePassword';
 
 
 
@@ -31,9 +31,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/logout" element={<Logout />} />
         
-      
       </Route>
-        
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/" element={<Login/>} />
         <Route path="/createBlog" element={<CreatePost/>} />

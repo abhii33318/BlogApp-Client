@@ -53,8 +53,15 @@ const Login = () => {
             <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <button onClick={handleLogin}>Login</button>
-            <p>
+            {/* <p>
               <Link to="/forgotPassword">Forgot Password?</Link>
+            </p> */}
+            <p>
+            Forgot Password?{' '}
+              <Link to="/forgotPassword">
+                {' '}
+                <span style={{ color: 'blue' }}>Reset Password</span>
+              </Link>
             </p>
             <p>
               Don't have an account?{' '}
