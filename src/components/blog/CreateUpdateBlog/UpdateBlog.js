@@ -8,6 +8,7 @@ import 'react-quill/dist/quill.snow.css'; // Import the Quill styles
 import ReactQuill from 'react-quill';
 import { useNavigate } from 'react-router-dom';
 import { AddCircle as AddIcon } from '@mui/icons-material';
+import Swal from 'sweetalert2';
 
 const BASE_URL = 'http://localhost:8000';
 
@@ -86,8 +87,10 @@ const UpdateBlog = () => {
   const [editorContent, setEditorContent] = useState('');
   const [imageFile, setImageFile] = useState(null); // Add state for image file
   const [selectedCategory, setSelectedCategory] = useState(''); // Initialize with an empty string
+  const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(false); // Add state for dropdown
   const [status, setStatus] = useState('draft');
+  console.log("category is",categories)
   useEffect(() => {
     const fetchExistingPost = async () => {
       try {
@@ -108,8 +111,17 @@ const UpdateBlog = () => {
         console.error('Error fetching existing blog post: ', error);
       }
     };
+    axios.get('http://localhost:8000/category')
+    .then((response) => {
+        setCategories(response.data);
+        console.log("category data inside is", response.data.category)
+    })
+    .catch((error) => {
+        console.error('Error fetching categories:', error);
+    });
 
     fetchExistingPost();
+
   }, [id]);
 
   const updatePost = async () => {
@@ -176,6 +188,11 @@ const UpdateBlog = () => {
 
       if (response.status === 200) {
         navigate(`/home`);
+        Swal.fire(
+          'Congrats',
+          'Draft Published successfully!',
+          'success'
+      );
         console.log("published sucessfully")
       }
     } catch (error) {
@@ -210,18 +227,12 @@ const UpdateBlog = () => {
   };
 
   const handleCategorySelect = (category) => {
+    setExistingPost({ ...existingPost, category });
     setSelectedCategory(category);
     setIsOpen(false); // Close the dropdown after selection
   };
 
-  const options = [
-    'Sports',
-    'Arts',
-    'Music',
-    'History',
-    'Others'
-  ];
-
+  
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -260,23 +271,23 @@ const UpdateBlog = () => {
 
           {/* Category dropdown */}
           <div className="dropdown-container">
-            <div className="dropdown-header" onClick={toggleDropdown}>
-              {selectedCategory || 'Select a category'} &#9660;
-            </div>
-            {isOpen && (
-              <ul className="dropdown-list">
-                {options.map((option, index) => (
-                  <li
-                    key={index}
-                    onClick={() => handleCategorySelect(option)}
-                    className="dropdown-item"
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+        <div className="dropdown-header" onClick={toggleDropdown}>
+          {selectedCategory || existingPost.category || 'Select a category'} &#9660;
+        </div>
+        {isOpen && (
+          <ul className="dropdown-list2">
+            {categories.map((option, index) => (
+              <li
+                key={index}
+                onClick={() => handleCategorySelect(option.category)}
+                className="dropdown-item"
+              >
+                {option.category}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
         </StyledFormControl>
 
         <QuillEditor

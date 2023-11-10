@@ -29,7 +29,7 @@ margin-right: 15px;
 /* Dropdown list */
 .dropdown-list {
 list-style: none;
-margin: 0;
+margin: 5 px;
 padding: 0;
 position: absolute;
 width: 100%;
@@ -40,6 +40,7 @@ border-radius: 0 0 4px 4px;
 background-color: #fff;
 
 }
+
 
 /* Dropdown list items */
 .dropdown-item {
@@ -99,3 +100,16 @@ background-color: #425df4;
 .ButtonStyle button {
   margin-right: 5px; /* This adds space between the buttons */
 }
+.dropdown-list2 {
+  list-style: none;
+  margin: 5 px;
+  padding: 0;
+  position: absolute;
+  width: 91%;
+  z-index: 1;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  background-color: #fff;
+  
+  }

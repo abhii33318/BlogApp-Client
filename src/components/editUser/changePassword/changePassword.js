@@ -49,12 +49,12 @@ const ChangePassword = () => {
 
       if (response.status === 200) {
         Swal.fire('Success!', response.data.message, 'success');
-        navigate('/home')
+        navigate('/editProfile')
       } else {
         Swal.fire('Error', response.data.message, 'error');
       }
     } catch (error) {
-      setError('Error while changing password');
+      setError('please check your current password');
       Swal.fire('Error', 'Error while changing password', 'error');
     }
   };

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
+
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -23,7 +24,10 @@ const EditProfile = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [errors, setErrors] = useState({});
+  
   const BASE_URL = 'http://localhost:8000'; // Replace with your API base URL
+
+
 
   useEffect(() => {
     const userID = localStorage.getItem('userId');
@@ -55,7 +59,9 @@ const EditProfile = () => {
       reader.readAsDataURL(file);
     }
   };
-
+  const handlechangePassword = async () =>{
+    navigate('/changePassword')
+  }
   const handleUpdateProfile = async () => {
     try {
       await validationSchema.validate(
@@ -103,7 +109,7 @@ const EditProfile = () => {
 
       if (response.status === 200) {
         Swal.fire('Congrats', 'User updated successfully!', 'success');
-        navigate('/home');
+        // navigate('/home');
       }
     } catch (error) {
       if (error.name === 'ValidationError') {
@@ -119,6 +125,7 @@ const EditProfile = () => {
   };
 
   return (
+    
     <div className="profile-container">
       <label className="image-upload-label">
         <input
@@ -187,7 +194,11 @@ const EditProfile = () => {
       <button className="save-button" onClick={handleUpdateProfile}>
         Update Profile
       </button>
+      <button className="save-button" onClick={handlechangePassword}>
+        change Password
+      </button>
     </div>
+    
   );
 };
 

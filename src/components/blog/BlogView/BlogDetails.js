@@ -17,6 +17,7 @@ const BlogDetails = () => {
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
   
+  
 
   const [editCommentId, setEditCommentId] = useState(null); 
   const [editedCommentText, setEditedCommentText] = useState('');
@@ -56,11 +57,14 @@ const BlogDetails = () => {
   };
 
   const handleDelete = async () => {
-    try {
-      await axios.delete(`${BASE_URL}/blogs/${id}`);
-      navigate('/home');
-    } catch (error) {
-      console.error('Error deleting blog post: ', error);
+    // Display a confirmation dialog before deletion
+    if (window.confirm('Are you sure you want to delete this blog post?')) {
+      try {
+        await axios.delete(`${BASE_URL}/blogs/${id}`);
+        navigate('/home');
+      } catch (error) {
+        console.error('Error deleting blog post: ', error);
+      }
     }
   };
 
@@ -196,27 +200,28 @@ const BlogDetails = () => {
                     <div className="comment-timestamp">Posted on: {formatDate(comment.createdAt)}</div>
                   </div>
                   <span className="comment-actions">
-                    {userId === comment.UserId || userId === blogDetails?.created_by?._id ? (
-                      <>
-                        {isCommentEditable(comment) && (
-                          <>
-                            {editCommentId === comment._id ? (
-                              <button className="CommentUpdate" onClick={() => handleCommentUpdate(comment._id)}>
-                                Update
-                              </button>
-                            ) : (
-                              <span className="edit-comment-icon" onClick={() => handleCommentEdit(comment._id)}>
-                                <EditIcon />
-                              </span>
-                            )}
-                          </>
-                        )}
-                        <span className="delete-comment-icon2" onClick={() => handleCommentDelete(comment._id)}>
-                          <DeleteIcon />
-                        </span>
-                      </>
-                    ) : null}
-                  </span>
+  {userId === comment.UserId || userId === blogDetails?.created_by?._id ? (
+    <div className="user-comment-actions">
+      {isCommentEditable(comment) && (
+        <>
+          {editCommentId === comment._id ? (
+            <button className="CommentUpdate" onClick={() => handleCommentUpdate(comment._id)}>
+              Update
+            </button>
+          ) : (
+            <span className="edit-comment-icon" onClick={() => handleCommentEdit(comment._id)}>
+              <EditIcon />
+            </span>
+          )}
+        </>
+      )}
+      <span className="delete-comment-icon2" onClick={() => handleCommentDelete(comment._id)}>
+        <DeleteIcon />
+      </span>
+    </div>
+  ) : null}
+</span>
+
                 </div>
               ))}
             </div>

@@ -133,11 +133,11 @@ const CreatePost = () => {
             const userData = await AuthService.createBlog(post);
 
             if (userData.status === 200) {
-                Swal.fire(
-                    'Congrats',
-                    'Published successfully!',
-                    'success'
-                );
+                // Swal.fire(
+                //     'Congrats',
+                //     'Published successfully!',
+                //     'success'
+                // );
                 navigate('/home');
             }
         } catch (error) {
@@ -244,7 +244,7 @@ const CreatePost = () => {
                     </Tooltip>
                     <div className="dropdown-container">
                         <div className="dropdown-header1" onClick={toggleDropdown}>
-                            {selectedOption || 'Select an option'} &#9660;
+                            {selectedOption || 'Select category'} &#9660;
                         </div>
                         {isOpen && (
                             <ul className="dropdown-list">

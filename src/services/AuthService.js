@@ -90,6 +90,18 @@ const AuthService = {
     }
 
   },
+
+  getBlogsbyUserId: async()=>{
+    try{
+      const userId = localStorage.getItem('userId') 
+      const response = await axios.get(`${BASE_URL}/blogss/${userId}`)
+      return response;
+
+    }catch(error){
+      throw error;
+    }
+
+  },
   
 
 

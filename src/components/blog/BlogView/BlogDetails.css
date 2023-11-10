@@ -151,21 +151,7 @@
   flex: 1; /* Allow comment content to grow and take available space */
 }
 
-.delete-comment-icon2 {
-    cursor: pointer;
-    color: #ccc;
-    margin-top: 14px;
-    margin-right: 10px;
-}
 
-
-.edit-comment-icon {
-  cursor: pointer;
-  color: #bababa;
-  font-size: 35px;
-  margin-right: 5px;
- 
-}
 
 /* Hover effect for the edit icon (optional) */
 .edit-comment-icon:hover {
@@ -181,12 +167,36 @@
   border-radius: 5px;
   cursor: pointer;
   width: 84px;
-  margin-top: 45px;
+  margin-top: 8px;
   margin-left: 6px;
 }
   
   .CommentUpdate:hover {
     background-color: #2980b9; /* Change background color on hover */
+  }
+  
+
+  .comment-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-comment-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 19px
+  }
+  
+  .CommentUpdate {
+    padding: 10px;
+  }
+  
+  .edit-comment-icon,
+  .delete-comment-icon2 {
+    cursor: pointer;
+    margin-right: 5px; /* Adjust the margin to your preference */
+    display: flex;
+    align-items: center;
   }
   
 

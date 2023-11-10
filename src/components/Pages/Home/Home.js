@@ -11,44 +11,55 @@ import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
 const Home = () => {
   const navigate = useNavigate();
   const [Author, setAuthor] = useState(localStorage.getItem('name'));
+  const [loading, setLoading] = useState(false); // State for loading indicator
+  
   const [blogData, setBlogData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [draftData, setDraftData] = useState([]);
   const [showDrafts, setShowDrafts] = useState(false);
-
+  let userId=localStorage.getItem('userId')
+  console.log("blog data is",blogData)
   useEffect(() => {
     if (!showDrafts) {
+      setLoading(true); // Set loading state to true before fetching data
       fetchData(selectedCategory);
     } else {
+      setLoading(true); // Set loading state to true before fetching user drafts
       // fetchUserDrafts();
     }
   }, [selectedCategory, showDrafts]);
 
   const fetchData = async (category) => {
     try {
-      const response = await AuthService.getAllposts();
-      const filteredData =
-        category === 'All' ? response : response.filter(blog => blog.category === category);
-      setBlogData(filteredData);
-      setShowDrafts(false); // Disable draft data when fetching regular data
+      if (category === 'My blogs') {
+        const response = await AuthService.getAllposts();
+        console.log('response is',response)
+
+        const userBlogs = response.filter(blog => blog.created_by._id === userId);
+        setBlogData(userBlogs);
+        console.log("userblogs is",userBlogs)
+        setShowDrafts(false);
+        setLoading(false);
+      } else {
+        const response = await AuthService.getAllposts();
+        console.log("response is",response)
+        const filteredData =
+          category === 'All' ? response : response.filter(blog => blog.category === category);
+        setBlogData(filteredData);
+        setShowDrafts(false);
+        setLoading(false);
+      }
     } catch (error) {
       console.error('Error fetching data: ', error);
     }
   };
+  
 
   const createBlog = () => {
     navigate('/createBlog');
   };
 
-  // const fetchUserDrafts = async () => {
-  //   try {
-  //     const response = await AuthService.getDraftbyUserId();
-  //     setDraftData(response.data.data.data);
-  //     setShowDrafts(true); // Enable draft data when fetching user drafts
-  //   } catch (error) {
-  //     console.error('Error fetching drafts: ', error);
-  //   }
-  // };
+  
   const fetchUserDrafts = async () => {
     try {
       console.log("hiiiii")
@@ -56,23 +67,27 @@ const Home = () => {
       // Fetch the current user's draft data
       const response = await AuthService.getDraftbyUserId();
       setDraftData(response.data.data.data);
-      setShowDrafts(true); // Enable draft data when fetching user drafts
+      console.log(response.data.data.data)
+      setShowDrafts(true);
+      setLoading(false); 
     } catch (error) {
       console.error('Error fetching drafts: ', error);
     }
   };
+  
 
-  const handleCategorySelect = (category) => {
+  const handleCategorySelect = async (category) => {
     setSelectedCategory(category);
+
     if (category === 'Draft') {
       setShowDrafts(true);
-      // fetchUserDrafts();
+      await fetchUserDrafts();
+   // Set showDrafts to false after fetching user blogs
     } else {
-      setShowDrafts(false);
       fetchData(category);
+      setShowDrafts(false);
     }
   };
-
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -80,13 +95,10 @@ const Home = () => {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   };
-
-  // Function to handle user login
-  // const handleUserLogin = (newUser) => {
-  //   // Clear cached data and update the Author state
-  //   setAuthor(newUser.name);
-  //   setDraftData([]); // Clear draft data
-  // };
+  const sortedBlogData = blogData.slice().sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+  
 
   return (
     <div>
@@ -103,11 +115,18 @@ const Home = () => {
               onCategorySelect={handleCategorySelect}
               selectedCategory={selectedCategory}
               fetchUserDrafts={fetchUserDrafts}
+              // fetchUserBlogs={fetchUserBlogs}
+
             />
           </div>
         </div>
         <div className='card-components'>
-          {showDrafts ? (
+          {loading ? (
+            <div className="loading">
+              <div className="spinner"></div> {/* This will display the spinner */}
+              Loading...
+            </div>
+          ) :showDrafts ? (
             draftData.map((draft) => (
               <Link to={`/blog/${draft._id}`} key={draft._id} className="blog-card-link">
                 <div className="blog-card">
@@ -132,7 +151,7 @@ const Home = () => {
               </Link>
             ))
           ) : (
-            blogData.map((blog) => (
+            sortedBlogData.map((blog) => (
               <Link to={`/blog/${blog._id}`} key={blog._id} className="blog-card-link">
                 <div className="blog-card">
                   <h2>{blog.title}</h2>
