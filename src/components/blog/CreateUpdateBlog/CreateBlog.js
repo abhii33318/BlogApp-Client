@@ -5,10 +5,12 @@ import { AddCircle as AddIcon } from '@mui/icons-material';
 import { Save as SaveIcon } from '@mui/icons-material';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
-import './create.css';
+import './createBlog.css';
 import AuthService from '../../../services/AuthService';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+
+//using styled components to avoid duplicate names
 
 const StyledFormControl = styled(FormControl)`
     margin-top: 15px;
@@ -89,8 +91,8 @@ const CreatePost = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const [newCategoryInput, setNewCategoryInput] = useState('');
     console.log("category data is", categories)
-    console.log("selectedOption",selectedOption)
-    post.category= selectedOption
+    console.log("selectedOption", selectedOption)
+    post.category = selectedOption
 
     useEffect(() => {
         // Fetch categories from the backend when the component mounts
@@ -133,11 +135,7 @@ const CreatePost = () => {
             const userData = await AuthService.createBlog(post);
 
             if (userData.status === 200) {
-                // Swal.fire(
-                //     'Congrats',
-                //     'Published successfully!',
-                //     'success'
-                // );
+
                 navigate('/home');
             }
         } catch (error) {
@@ -171,11 +169,8 @@ const CreatePost = () => {
     const handleOptionSelect = (option) => {
         setSelectedOption(option);
         setIsOpen(false);
-        console.log("selected option is",option)
-        
-        // Save the selected category in the post state
-        //  setPost(option);
-        // post.category = option
+        console.log("selected option is", option)
+
     };
     const handleAddCategory = async () => {
         try {
@@ -207,7 +202,7 @@ const CreatePost = () => {
     let name = localStorage.getItem('name');
     post.username = name;
     post.created_by = localStorage.getItem('userId');
-    
+
 
     const modules = {
         toolbar: [
@@ -234,10 +229,6 @@ const CreatePost = () => {
                             onClick={() => saveDraft()}
                             color="primary"
                             className='draft1'
-                            // style={{
-                            //     color: 'grey',
-                            //     width: 49px,
-                            // }}
                         >
                             <SaveIcon />
                         </IconButton>

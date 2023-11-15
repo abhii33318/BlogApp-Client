@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './update.css';
+import './updateBlog.css';
 import { styled, Box, Button, InputBase, FormControl } from '@mui/material';
 import 'react-quill/dist/quill.snow.css'; // Import the Quill styles
 import ReactQuill from 'react-quill';

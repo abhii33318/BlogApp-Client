@@ -5,8 +5,6 @@ const BASE_URL = 'http://localhost:8000';
 // const userId = localStorage.getItem('userId') 
 
 const AuthService = {
-  // const [userId, setUserId] = useState(localStorage.getItem('userId'));
-  // const userId = localStorage.getItem('userId') 
   
   login: async (username, password) => {
     try {
@@ -17,7 +15,7 @@ const AuthService = {
       }); 
       console.log(response)
       
-      return response // Assuming your backend returns user data on successful login
+      return response 
     } catch (error) {
       throw error;
     }
@@ -62,7 +60,7 @@ const AuthService = {
       const response = await axios.post(`${BASE_URL}/blogs`, 
         post
       );
-      return response; // Assuming your backend returns user data on successful login
+      return response; 
     } catch (error) {
       throw error;
     }

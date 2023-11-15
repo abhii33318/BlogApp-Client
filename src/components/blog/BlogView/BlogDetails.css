@@ -9,8 +9,8 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
-  position: relative; 
+  justify-content: space-between;
+  position: relative;
 }
 
 
@@ -36,14 +36,15 @@
   margin-top: 10px;
   font-size: 16px;
   color: #777;
-  text-align: left; 
+  text-align: left;
 }
 
 .meta p {
   margin: 5px 0;
 }
-.blog-div{
- 
+
+.blog-div {
+
   margin: 20px auto;
 
 }
@@ -51,9 +52,9 @@
 
 .edit-link,
 .update-link {
-  color: #007bff; 
+  color: #007bff;
   text-decoration: none;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 
@@ -62,15 +63,15 @@
   text-decoration: underline;
 }
 
-.delete-link{
+.delete-link {
 
-  color: #e11b1f; 
+  color: #e11b1f;
   text-decoration: none;
   margin-left: 685px;
 
 }
 
-.edit-delete{
+.edit-delete {
   margin-top: 20px;
 }
 
@@ -129,14 +130,15 @@
   margin-bottom: 10px;
   background-color: #fff;
   display: flex;
-  align-items: flex-start; /* Align content at the top */
-  justify-content: space-between; 
+  align-items: flex-start;
+  /* Align content at the top */
+  justify-content: space-between;
 }
 
 
 .comment-author {
   font-weight: bold;
-  
+
 }
 
 .comment-timestamp {
@@ -148,14 +150,15 @@
 
 
 .comment-content {
-  flex: 1; /* Allow comment content to grow and take available space */
+  flex: 1;
+  /* Allow comment content to grow and take available space */
 }
 
 
 
 /* Hover effect for the edit icon (optional) */
 .edit-comment-icon:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 
@@ -170,33 +173,29 @@
   margin-top: 8px;
   margin-left: 6px;
 }
-  
-  .CommentUpdate:hover {
-    background-color: #2980b9; /* Change background color on hover */
-  }
-  
 
-  .comment-actions {
-    display: flex;
-    align-items: center;
-  }
-  
-  .user-comment-actions {
-    display: flex;
-    align-items: center;
-    margin-top: 19px
-  }
-  
-  .CommentUpdate {
-    padding: 10px;
-  }
-  
-  .edit-comment-icon,
-  .delete-comment-icon2 {
-    cursor: pointer;
-    margin-right: 5px; /* Adjust the margin to your preference */
-    display: flex;
-    align-items: center;
-  }
-  
+.CommentUpdate:hover {
+  background-color: #2980b9;
+}
 
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-comment-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 19px
+}
+
+
+.edit-comment-icon,
+.delete-comment-icon2 {
+  cursor: pointer;
+  margin-right: 5px;
+  /* Adjust the margin to your preference */
+  display: flex;
+  align-items: center;
+}

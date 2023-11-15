@@ -79,16 +79,4 @@
   .image-upload-label .add-image-button:hover {
     background-color: #aaa;
   }
-  /* .profile-image{
-    display: flex;
-    justify-content: center;
-    padding: 0.5rem;
-    align-items: center;
-    background-image: url('../../assets/bg.jpg'); 
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 100vh;
-    width: 100%;
-
-  } */
+  

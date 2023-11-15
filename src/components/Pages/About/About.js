@@ -23,7 +23,7 @@ function About() {
 
 
           </p>
-          {/* Add more content here */}
+         
         </div>
       </div>
     </div>
